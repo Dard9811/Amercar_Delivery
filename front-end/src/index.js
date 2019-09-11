@@ -1,5 +1,6 @@
 import React from "react";
-import ReacDom from "react-dom";
-import App from "./App";
+import ReactDom from "react-dom";
+import /* App, */ { NavFooter, NavBar } from "./App";
 
-ReacDom.render(<App />, document.getElementById("navBar"));
+ReactDom.render(<NavBar />, document.getElementById("navBar"));
+ReactDom.render(<NavFooter />, document.getElementById("footer"));

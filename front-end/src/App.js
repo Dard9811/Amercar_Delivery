@@ -29,7 +29,7 @@ function NavBar(){
   return (navBar);
 }
 
-/* function NavFooter(){
+function NavFooter(){
   let footer =
   <div className="row">
     <div className="col">
@@ -43,9 +43,11 @@ function NavBar(){
     </div>
   </div>;
   return footer;
-} */
+}
 
-export default NavBar;
+export {NavBar} ;
+
+export {NavFooter};
 
 /* ReactDOM.render(
   <NavFooter />,
