@@ -1,4 +1,5 @@
 import React from "react";
+import Producto from "./ListaProducto.js";
 
 function NavBar(){
   let navBar =
@@ -45,11 +46,39 @@ function NavFooter(){
   return footer;
 }
 
+class App extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state = {
+      productos: []
+    }
+  }
+  componentDidMount(){
+    fetch("/data")
+      .then(res => res.json())
+      .then(productos =>  this.setState({
+        productos: productos
+      })
+    );
+  }
+
+  renderProductos(){
+    return this.state.productos.map(p => <Producto producto={p}></Producto>);
+  };
+
+  render(){
+    return (
+      <table className="table table-bordered mt-3">
+        <tbody>
+          {this.renderProductos()}
+        </tbody>
+      </table>
+    );
+  }
+}
+
+export default App;
 export {NavBar} ;
 
 export {NavFooter};
-
-/* ReactDOM.render(
-  <NavFooter />,
-  document.getElementById("footer")
-) */
