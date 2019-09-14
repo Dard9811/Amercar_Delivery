@@ -1,8 +1,9 @@
 import React from "react";
 import Producto, {Jumbo, NodoCategoria} from "./Body.js";
-import NavBar from "./NavBar.js";
+import NavBar, { } from "./NavBar.js";
 import Footer from "./Footer.js";
 import Categoria from "./Categoria.js";
+import SignIn from "./SignIn.js";
 
 class App extends React.Component{
   constructor(props){
@@ -10,12 +11,15 @@ class App extends React.Component{
 
     this.state = {
       productos: [],
-      boolean: false
+      booleanCategoria: false,
+      booleanSignIn: false
     }
 
     this.handleBooleanF = this.handleBooleanF.bind(this);
     this.handleBooleanT = this.handleBooleanT.bind(this);
-  }
+/*     this.handleBooleanSF = this.handleBooleanSF.bind(this);
+    this.handleBooleanST = this.handleBooleanST.bind(this); */
+}
 
   componentDidMount(){
     fetch("/data")
@@ -36,30 +40,37 @@ class App extends React.Component{
 
   handleBooleanT(){
     this.setState({
-      boolean: true
+      booleanCategoria: true
     });
   }
 
   handleBooleanF(){
     this.setState({
-      boolean: false
+      booleanCategoria: false
     });
   }
+/*
+  handleBooleanSF(){
+    this.setState({
+      booleanSignIn: false
+    })
+  }
+
+  handleBooleanST(){
+    this.setState({
+      booleanSignIn: true
+    })
+  } */
 
   render(){
-    let boolean = this.state.boolean;
+    let booleanC = this.state.booleanCategoria;
     let categoria;
 
-    if (boolean) {
-      categoria = <Categoria handler={this.handleBooleanF} render={this.renderCategoria()}></Categoria>
-;
+    if (booleanC) {
+      categoria = <Categoria handler={this.handleBooleanF} render={this.renderCategoria()}></Categoria>;
     } else {
-      categoria =
-      <div>
-        <NavBar onClick={this.handleBooleanT}></NavBar>
-        <Jumbo></Jumbo>
-        Hola mundo!!
-      </div>
+      categoria =<SignIn handler={this.handleBooleanT}></SignIn>
+
     }
 
     return (

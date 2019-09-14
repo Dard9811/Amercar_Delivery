@@ -1,14 +1,26 @@
 import React from "react";
 
-function LinkCategoria(props){
+/* function LinkCategoria(props){
   return(
-    <a className="nav-link" href="#categoria" onClick={props.onClick}>Categoria</a>
+    <a className="nav-link my-2" href="#categoria" onClick={props.onClick}>Categoria</a>
   );
 }
 
 function LinkCategoria2(props) {
   return(
-    <a className="nav-link" href="#categoria" onClick={props.onClick}><b>Categoria</b></a>
+    <a className="nav-link my-2" href="#categoria" onClick={props.onClick}><b>Categoria</b></a>
+  )
+} */
+
+function ButtonSignIn(props){
+  return(
+    <button href="#Login" className="nav-link btn btn-dark text-light mx-2 my-2" onClick={props.signIn}>{props.txt}</button>
+  )
+}
+
+function ButtonLogOut(props){
+  return(
+      <button href="#LogOut" className="nav-link btn btn-dark text-light mx-2 my-2" onClick={props.logOut}>{props.txt}</button>
   )
 }
 
@@ -40,9 +52,9 @@ class NavBar extends React.Component{
     let link;
 
     if (isClicked) {
-      link = <LinkCategoria onClick={this.handleClick, this.props.onClick}></LinkCategoria>
+      link = <ButtonSignIn signIn={this.handleClick, this.props.onClick} txt="Sign In"></ButtonSignIn>
     } else {
-      link = <LinkCategoria2 onClick={this.handleClick2, this.props.onClick}></LinkCategoria2>
+      link = <ButtonLogOut logOut={this.handleClick2, this.props.onClick} txt="Log Out"></ButtonLogOut>
     }
 
     return(
@@ -54,22 +66,19 @@ class NavBar extends React.Component{
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="#">Home</a>
-              </li>
-              <li className="nav-item">
+              <form className="form-inline">
+                <input type="search" className="form-control mr-sm-2" placeholder="Search" aria-label="Search"/>
+                <button className="btn btn-outline-success my-2" type="submit">Search</button>
+              </form>
+              <li className="nav-item my-1">
                 {link}
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Pricing</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Disabled</a>
               </li>
             </ul>
           </div>
+          <ul className="navbar-nav mr-5">
+          </ul>
         </nav>
       </div>
     );
