@@ -6,7 +6,7 @@ import {Jumbo} from "./Body";
 function Categoria(props) {
   return(
     <div>
-    <NavBar onClick={props.handler}></NavBar>
+    <NavBar onClick={props.handler} isClicked={false}></NavBar>
     <Jumbo></Jumbo>
     <div className="container table-responsive">
       <table className="table table-bordered mt-3 ml-3 mr-3 mb-3">

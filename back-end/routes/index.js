@@ -2,10 +2,10 @@ var express = require("express");
 var router = express.Router();
 const MongoClient = require("mongodb").MongoClient;
 
-const url = "mongodb://localhost:27017";
+const url = "mongodb://localhost:27017"/* "mongodb+srv://<username>:<password>@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority"; */;
+const client = new MongoClient(url);
 
 function readProductos(resolve, reject){
-  const client = new MongoClient(url);
   client.connect(
     (err) =>{
       if (err) {
@@ -27,6 +27,14 @@ function readProductos(resolve, reject){
           });
     }
   );
+}
+
+function postUser(resolve, reject){
+  client.connect.then(
+    (err) =>{
+
+    }
+  )
 
 }
 
@@ -39,5 +47,9 @@ router.get("/data", function(req, res, next) {
   )
 
 });
+
+router.post("/post-user", function(req, res, next) {
+
+})
 
 module.exports = router;

@@ -7,7 +7,7 @@ class Footer extends React.Component{
 
   render(){
     return(
-      <div className="row mt-5 mb-3 justify-content-center">
+      <div className="row mt-5 mb-3">
         <div className="col text-center">
           <span id="face">Facebook</span>
         </div>

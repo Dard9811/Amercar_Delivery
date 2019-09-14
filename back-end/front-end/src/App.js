@@ -11,8 +11,8 @@ class App extends React.Component{
 
     this.state = {
       productos: [],
-      booleanCategoria: false,
-      booleanSignIn: false
+      booleanCategoria: true,
+      url: ["categoria", "sigIn"]
     }
 
     this.handleBooleanF = this.handleBooleanF.bind(this);
@@ -49,25 +49,14 @@ class App extends React.Component{
       booleanCategoria: false
     });
   }
-/*
-  handleBooleanSF(){
-    this.setState({
-      booleanSignIn: false
-    })
-  }
-
-  handleBooleanST(){
-    this.setState({
-      booleanSignIn: true
-    })
-  } */
 
   render(){
     let booleanC = this.state.booleanCategoria;
+    let url = this.state.url;
     let categoria;
 
     if (booleanC) {
-      categoria = <Categoria handler={this.handleBooleanF} render={this.renderCategoria()}></Categoria>;
+      categoria = <Categoria handler={this.handleBooleanF} render={this.renderCategoria()} href={url[0]}></Categoria>;
     } else {
       categoria =<SignIn handler={this.handleBooleanT}></SignIn>
 
