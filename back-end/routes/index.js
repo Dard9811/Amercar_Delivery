@@ -15,14 +15,12 @@ function readProductos(resolve, reject){
       const db = client.db("amercar");
       const colProducto = db.collection("producto");
 
-      colProducto.find({}).limit(10).toArray(
+      colProducto.find({}).limit(12).toArray(
           (err, productos) => {
             if (err) {
               reject(err);
               throw err;
             }
-/*             console.log("# Productos: ", productos.length); */
-
             resolve(productos)
 
             client.close();
