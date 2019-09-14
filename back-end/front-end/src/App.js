@@ -2,6 +2,7 @@ import React from "react";
 import Producto, {Jumbo, NodoCategoria} from "./Body.js";
 import NavBar from "./NavBar.js";
 import Footer from "./Footer.js";
+import Categoria from "./Categoria.js";
 
 class App extends React.Component{
   constructor(props){
@@ -62,62 +63,14 @@ class App extends React.Component{
     }
 
     return (
-      <div>{categoria}</div>
+      <div>
+        {categoria}
+        <div className="container">
+          <Footer></Footer>
+        </div>
+      </div>
     );
   }
 }
 
-function Categoria(props) {
-  return(
-    <div>
-    <NavBar onClick={props.handler}></NavBar>
-    <Jumbo></Jumbo>
-    <div className="container table-responsive">
-      <table className="table table-bordered mt-3 ml-3 mr-3">
-        <tbody>
-          <tr>
-            <h1>Catalogo</h1>
-          </tr>
-          <tr>
-            <td>{props.render[0]}</td>
-            <td>{props.render[1]}</td>
-            <td>{props.render[2]}</td>
-          </tr>
-          <tr>
-            <td>{props.render[3]}</td>
-            <td>{props.render[4]}</td>
-            <td>{props.render[5]}</td>
-          </tr>
-          <tr>
-            <td>{props.render[6]}</td>
-            <td>{props.render[7]}</td>
-            <td>{props.render[8]}</td>
-          </tr>
-          <tr>
-            <td>{props.render[9]}</td>
-            <td>{props.render[10]}</td>
-            <td>{props.render[11]}</td>
-          </tr>
-        </tbody>
-      </table>
-      <Footer></Footer>
-    </div>
-  </div>
-  );
-}
-
-function name(params) {
-
-}
-
 export default App;
-
-/* export {NavBar} ; */
-{/* <div className="container">
-  <table className="table table-bordered mt-3">
-    <tbody>
-      {this.renderProductos()}
-    </tbody>
-  </table>
-  <Footer></Footer>
-</div>  */}

@@ -7,14 +7,14 @@ class Footer extends React.Component{
 
   render(){
     return(
-      <div className="row">
-        <div className="col">
+      <div className="row mt-5 mb-3 justify-content-center">
+        <div className="col text-center">
           <span id="face">Facebook</span>
         </div>
-        <div className="col">
+        <div className="col text-center">
           <span id="insta">Instagram</span>
         </div>
-        <div className="col">
+        <div className="col text-center">
           <span id="twit">Twitter</span>
         </div>
       </div>
