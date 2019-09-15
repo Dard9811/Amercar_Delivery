@@ -4,7 +4,7 @@
   "description": "Our firt delivery app",
   "main": "app.js",
   "scripts": {
-    "start": "cd back-end && npm start",
+    "start": "npm run dev --prefix back-end",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
