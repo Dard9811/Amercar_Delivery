@@ -11,19 +11,21 @@ function Jumbo() {
 
 function NodoCategoria(props){
   return(
-    <table className="table table-bordered">
-      <tbody>
-        <tr>
-          <td>Imagen</td>
-        </tr>
-        <tr>
-          <td>{props.producto.Nombre}</td>
-        </tr>
-        <tr>
-          <td>{props.producto.PRECIO}</td>
-        </tr>
-      </tbody>
-    </table>
+    <a href="" className="">
+      <table className="table table-borderless">
+        <tbody>
+          <tr>
+            <td><img className="img-fluid" src="images/No_Disponible.png" alt="Imagen Producto"/></td>
+          </tr>
+          <tr>
+            <td>{props.producto.Nombre}</td>
+          </tr>
+          <tr>
+            <td>{props.producto.PRECIO}</td>
+          </tr>
+        </tbody>
+      </table>
+    </a>
   );
 }
 

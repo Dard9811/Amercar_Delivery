@@ -1,6 +1,5 @@
 import React from "react";
-import Producto, {Jumbo, NodoCategoria} from "./Body.js";
-import NavBar, { } from "./NavBar.js";
+import Producto, {NodoCategoria} from "./Body.js";
 import Footer from "./Footer.js";
 import Categoria from "./Categoria.js";
 import SignIn from "./SignIn.js";
@@ -12,13 +11,10 @@ class App extends React.Component{
     this.state = {
       productos: [],
       booleanCategoria: true,
-      url: ["categoria", "sigIn"]
     }
 
     this.handleBooleanF = this.handleBooleanF.bind(this);
     this.handleBooleanT = this.handleBooleanT.bind(this);
-/*     this.handleBooleanSF = this.handleBooleanSF.bind(this);
-    this.handleBooleanST = this.handleBooleanST.bind(this); */
 }
 
   componentDidMount(){
@@ -52,13 +48,12 @@ class App extends React.Component{
 
   render(){
     let booleanC = this.state.booleanCategoria;
-    let url = this.state.url;
     let categoria;
 
     if (booleanC) {
-      categoria = <Categoria handler={this.handleBooleanF} render={this.renderCategoria()} href={url[0]}></Categoria>;
+      categoria = <Categoria handler={this.handleBooleanF} render={this.renderCategoria()}></Categoria>;
     } else {
-      categoria =<SignIn handler={this.handleBooleanT}></SignIn>
+      categoria = <SignIn></SignIn>
 
     }
 

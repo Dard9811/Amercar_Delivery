@@ -5,6 +5,7 @@ const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb://localhost:27017"/* "mongodb+srv://<username>:<password>@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority"; */;
 const client = new MongoClient(url);
 
+
 function readProductos(resolve, reject){
   client.connect(
     (err) =>{
@@ -29,15 +30,6 @@ function readProductos(resolve, reject){
   );
 }
 
-function postUser(resolve, reject){
-  client.connect.then(
-    (err) =>{
-
-    }
-  )
-
-}
-
 /* GET home page. */
 router.get("/data", function(req, res, next) {
 
@@ -48,8 +40,38 @@ router.get("/data", function(req, res, next) {
 
 });
 
+/* Post Usuarios*/
 router.post("/post-user", function(req, res, next) {
+  client.connect.then(
+    (err) =>{
+      if (err) {
+        reject(err);
+        throw err;
+      }
+      const db = client.db("amercar");
+      const colUser = db.collection("usuarios");
 
+      let data = {
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        email: req.body.email,
+        contrasena: req.body.contrasena,
+        direccion: req.body.dir,
+        cedula: req.body.cedula,
+        telefono: req.body.telefono
+      }
+
+      colUser.insertOne(data, function(err, collection){
+        if (err) {
+          reject(err);
+          throw err;
+        }
+
+        console.log("Record inserted succesfuly", data)
+      });
+    }
+  )
+/*   return res.redirect("/"); */
 })
 
 module.exports = router;
