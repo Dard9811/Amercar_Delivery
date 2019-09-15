@@ -21,7 +21,7 @@ function NodoCategoria(props){
             <td>{props.producto.Nombre}</td>
           </tr>
           <tr>
-            <td>{props.producto.PRECIO}</td>
+            <td> $ {props.producto.PRECIO}</td>
           </tr>
         </tbody>
       </table>

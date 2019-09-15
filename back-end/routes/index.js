@@ -1,33 +1,68 @@
 var express = require("express");
 var router = express.Router();
-const MongoClient = require("mongodb").MongoClient;
 
-const url = "mongodb+srv://daniel:dard98031160243@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority";/* "mongodb+srv://<username>:<password>@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority"; */;
-const client = new MongoClient(url);
+/* const url = "mongodb://localhost:27017"; *//* "mongodb+srv://<username>:<password>@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority"; */;
+/* const client = new MongoClient(url); */
 
+
+
+function connectUsuarios(callback){
+  var MongoClient = require("mongodb").MongoClient;
+  var url = "mongodb+srv://daniel:dard98031160243@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority";
+  var client = new MongoClient(url,{useNewUrlParser:true});
+
+  client.connect(function(err) {
+
+    if (err) throw err;
+
+    console.log("Conectado con mongo");
+    var db = client.db("amercar");
+    var colComment = db.collection("usuarios");
+
+    callback(colComment, client);
+  })
+}
+
+function connectProducto(callback){
+  var MongoClient = require("mongodb").MongoClient;
+  var url = "mongodb+srv://daniel:dard98031160243@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority";
+  var client = new MongoClient(url,{useNewUrlParser:true});
+
+  client.connect(function(err) {
+
+    if (err) throw err;
+
+    console.log("Conectado con mongo");
+    var db = client.db("amercar");
+    var colComment = db.collection("producto");
+
+    callback(colComment, client);
+  })
+}
 
 function readProductos(resolve, reject){
-  client.connect(
-    (err) =>{
-      if (err) {
-        reject(err);
-        throw err;
-      }
-      const db = client.db("amercar");
-      const colProducto = db.collection("producto");
+  connectProducto(function(colProds, client){
+    colProducto.find({}).limit(12).toArray(
+      (err, productos) => {
+        if (err) {
+          reject(err);
+          throw err;
+        }
+        resolve(productos)
 
-      colProducto.find({}).limit(12).toArray(
-          (err, productos) => {
-            if (err) {
-              reject(err);
-              throw err;
-            }
-            resolve(productos)
+        client.close();
+      });
+  })
+}
 
-            client.close();
-          });
-    }
-  );
+function crearUsuario(content, callback){
+  connectUsuarios(function(colUsuario, client){
+    colUsuario.insertOne(content, function(err){
+      if(err) throw err;
+      console.log("Inserto el usuario");
+      client.close();
+    });
+  })
 }
 
 /* GET home page. */
@@ -41,7 +76,7 @@ router.get("/data", function(req, res, next) {
 });
 
 /* Post Usuarios*/
-router.post("/post-user", function(req, res, next) {
+router.post("/crearUsuario", function(req, res, next) {
   client.connect.then(
     (err) =>{
       if (err) {

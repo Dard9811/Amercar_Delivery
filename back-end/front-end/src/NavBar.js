@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function ButtonSignInDisabled(props){
     return (
@@ -23,13 +24,13 @@ class NavBar extends React.Component{
     if (isClicked) {
       link = <ButtonSignInDisabled signIn={this.props.onClick} txt="Sign in" isClicked={true}></ButtonSignInDisabled>
     } else {
-      link = <ButtonSignIn logOut={this.props.onClick} txt="SignIn" ></ButtonSignIn>
+      link = <ButtonSignIn logOut={this.props.onClick} txt="Sign In" ></ButtonSignIn>
     }
     return(
       <div className="sticky-top">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <a className="navbar-brand" href="index.html">
-            <img className="img-fluid" src="images/Logo.PNG" alt="Logo" width="200" heigth="50"></img>
+            <Link to="/"><img className="img-fluid" src="images/Logo.PNG" alt="Logo" width="200" heigth="50"></img></Link>
           </a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
@@ -37,10 +38,13 @@ class NavBar extends React.Component{
           <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul className="navbar-nav">
               <form className="form-inline">
-                <input type="search" className="form-control mr-sm-2" placeholder="Just type to search" aria-label="Search" onChange={this.props.onChange}/>
+                <input type="search" className="form-control mr-sm-2" placeholder="Just type to search" aria-label="Search"/>
               </form>
               <li className="nav-item my-1">
-                {link}
+                <Link to="/signin">{link}</Link>
+              </li>
+              <li className="nav-item my-1">
+                <Link to="/login"><ButtonSignIn txt="Log In" ></ButtonSignIn></Link>
               </li>
             </ul>
           </div>

@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import NavBar from "./NavBar";
 import {Jumbo} from "./Body";
 
@@ -15,24 +15,7 @@ function Categoria(props) {
             <h1>Catalogo</h1>
           </tr>
           <tr>
-            <td className="align-middle">{props.render[0]}</td>
-            <td className="align-middle">{props.render[1]}</td>
-            <td className="align-middle">{props.render[2]}</td>
-          </tr>
-          <tr>
-            <td className="align-middle">{props.render[3]}</td>
-            <td className="align-middle">{props.render[4]}</td>
-            <td className="align-middle">{props.render[5]}</td>
-          </tr>
-          <tr>
-            <td className="align-middle">{props.render[6]}</td>
-            <td className="align-middle">{props.render[7]}</td>
-            <td className="align-middle">{props.render[8]}</td>
-          </tr>
-          <tr>
-            <td className="align-middle">{props.render[9]}</td>
-            <td className="align-middle">{props.render[10]}</td>
-            <td className="align-middle">{props.render[11]}</td>
+            {props.}
           </tr>
         </tbody>
       </table>
@@ -54,4 +37,4 @@ function Categoria(props) {
   );
 }
 
-export default Categoria;
+export default Categoria; */
