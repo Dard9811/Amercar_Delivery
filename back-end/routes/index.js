@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const MongoClient = require("mongodb").MongoClient;
 
-const url = "mongodb://localhost:27017"/* "mongodb+srv://<username>:<password>@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority"; */;
+const url = "mongodb+srv://daniel:dard98031160243@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority";/* "mongodb+srv://<username>:<password>@amercar-p9oq8.mongodb.net/test?retryWrites=true&w=majority"; */;
 const client = new MongoClient(url);
 
 
